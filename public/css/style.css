@@ -771,7 +771,7 @@ button:focus {
 
 @media all and (max-width: 540px) {
   .slide {
-    height: 390vh;
+    height: 400vh;
   }
 
   .multi-button {
