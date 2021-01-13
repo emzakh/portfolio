@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
 
-
-
 :root {
   --border-size: 0.125rem;
   --duration: 250ms;
@@ -17,13 +15,13 @@
 
 
 * {
-
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-
 }
-
+.scrollingContainer{
+  cursor:pointer;
+}
 #mouse-scroll {
   display: block;
 }
@@ -66,27 +64,29 @@
   -webkit-animation: mouse-scroll 1s infinite; 
     -moz-animation: mouse-scroll 1s infinite;
 }
-#mouse-croll .down-arrow-1 {
-  animation-delay: .1s;
-   -webkit-animation-delay: .1s; 
-   -moz-animation-delay: .1s;
-   animation-direction: alternate;
-   -webkit-animation-direction: alternate;
-}
-#mouse-scroll .down-arrow-2 {
+
+#mouse-scroll .down-arrow-1 {
   animation-delay: .2s; 
   -webkit-animation-delay: .2s; 
   -moz-animation-delay: .2s;
   animation-direction: alternate;
   -webkit-animation-direction: alternate;
 }
-#mouse-scroll .down-arrow-3 {
-  animation-delay: .3s;
-   -webkit-animation-delay: .3s;
-   -moz-animation-dekay: .3s;
-   animation-direction: alternate;
-   -webkit-animation-direction: alternate;
+#mouse-scroll .down-arrow-2 {
+  animation-delay: .4s; 
+  -webkit-animation-delay: .4s; 
+  -moz-animation-delay: .4s;
+  animation-direction: alternate;
+  -webkit-animation-direction: alternate;
 }
+#mouse-scroll .down-arrow-3 {
+  animation-delay: .6s; 
+  -webkit-animation-delay: .6s; 
+  -moz-animation-delay: .6s;
+  animation-direction: alternate;
+  -webkit-animation-direction: alternate;
+}
+
 #mouse-scroll .mouse-in {
   height: 5px;
   width: 2px;
