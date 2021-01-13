@@ -963,11 +963,16 @@ button:focus {
   .slide {
     height: 400vh;
   }
-
+  
   .multi-button {
 
     width: 100%;
   }
+
+  .overlay{
+    height:300vh;
+  }
+
 }
 
 
