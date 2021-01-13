@@ -961,7 +961,22 @@ button:focus {
     width: 100%;
   }
 }
+@media all and (max-height:850px) {
+ 
+  .title-overlay{
+    margin-bottom:20px;
+  }
+  
 
+  .hr-overlay{
+    width:100%;
+  }
+ 
+  .overlay-container{
+    overflow-y: scroll;
+  }
+
+}
 @media all and (max-height:540px) {
   .slide {
     height: 400vh;
