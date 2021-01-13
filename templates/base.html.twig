@@ -1,12 +1,146 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+	<head>
+		<meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+		
+		</title>
+		<link rel="stylesheet" href="{{asset('/css/style.css') }}">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> 
+		</head>
+		<body>
+
+			{% block body %}
+				
+					<div class="slide">
+						<div id="app">
+							<div class="content">
+								<div class="fixed-section firstpage">
+									<h1 class="heading">Maximino</h1>
+									<div class="background">
+										<div class="bg-block"></div>
+									</div>
+									<div class="mid">
+										<div class="mid-block"></div>
+									</div>
+									<div class="bottom">
+										<div class="bot-block"></div>
+									</div>
+								</div>
+
+								<div class="fixed-section secondpage">
+									<h1 class="heading">
+										<span>Max</span>
+										<span class ="disparait">im</span>
+										<span>ino</span>
+									</h1>
+									<img src="images/webdevelopper.png" class="logowebdev" style="padding-top:50px;"></img>
+
+								<div class="multi-button" style="margin-top:50px;" >
+									<a href="#">CV</a>
+									<a href="{{ path('me')}}"button>Me</a>
+									<a href="{{ path('work')}}">Work</a>
+								</div>
+							</div>
+						</div>
+					</div>
+			
+				{% endblock %}
+			
+	
+	
+
+
+
+{% block javascripts %}
+	<script>
+const bg = document.querySelector('.background');
+const mid = document.querySelector('.mid');
+const bot = document.querySelector('.bottom');
+const title = document.querySelector('.firstpage h1');
+const titleTwo = document.querySelector('.secondpage h1');
+const titleParts = document.querySelectorAll('.secondpage h1 span');
+const firstpage = document.querySelector('.firstpage');
+const thirdpage = document.querySelector('.thirdpage');
+const logowebdev = document.querySelector('.logowebdev');
+const app = document.querySelector('#app');
+const imgs = document.querySelectorAll('.imgs .img');
+const progressLine = document.querySelector('.progress-line');
+const buttonEnter = document.querySelector('.multi-button');
+const headingos = document.querySelector('.disparait')
+
+const calculPos = () => {    
+    var scrollito = this.scrollY;
+    const yoff = document.documentElement.scrollTop || window.scrollY || window.pageYOffset || document.body.scrollTop
+    const finPremierTriangle = 500;
+    const finTransition = 800;
+    const finTransitionPrenom = 2300;
+    const finDePage = 3450;    
+      
+    if (document.body.clientHeight - yoff - window.innerHeight === 0 ) {
+        buttonEnter.classList.add('anim');
+        headingos.classList.add('anim2');       
+        
+    }else{
+        buttonEnter.classList.remove('anim');
+        headingos.classList.remove('anim2');       
+    } 
+
+    if (yoff < finPremierTriangle) { // Mountain Parallax
+        const perc = yoff / finPremierTriangle;
+        bot.style.transform = `scale(${1 + 0.4 * perc})`;
+        mid.style.transform = `scale(${1 + 0.1 * perc})`;
+        bg.style.transform = `scale(${1 + 0.04 * perc})`;
+        title.style.transform = `translate(-50%, -50%) scale(${1 + 0.25 * perc})`;
+        firstpage.style.opacity = `1`;
+    } else if (yoff < finTransition) { // Fade transition
+        const perc = (yoff - finPremierTriangle) / (finTransition - finPremierTriangle);
+        firstpage.style.opacity = `${1 - perc}`;
+        firstpage.style.display = 'block';
+        titleParts[0].style.transform = `  translate3d(0, 0, 0)`;
+        titleParts[1].style.transform = `  translate3d(0, 0, 0)`;
+        titleParts[2].style.transform = `  translate3d(0, 0, 0)`;
+    } else if (yoff < finTransitionPrenom) { // Word splitting
+        title.style.transform = `translate(-50%, -50%) scale(1.25)`;
+        bot.style.transform = `scale(1.4)`;
+        mid.style.transform = `scale(1.1)`;
+        bg.style.transform = `scale(1.04)`;
+        firstpage.style.opacity = `0`;
+        firstpage.style.display = 'none';
+        const offset = yoff - finTransition;
+        titleParts[0].style.transform = ` translate3d(0, -${offset}px, 0)`;
+        titleParts[1].style.transform = ` translate3d(0, 0, 0)`;
+        titleParts[2].style.transform = ` translate3d(0, ${offset}px, 0)`;
+        logowebdev.style.transform = `scale(0)`;
+        app.style.transform = `translate3d(0, 0, 0)`;
+
+        if (offset > 100) {
+            titleParts[1].style.transform = `translate3d(-${offset - 100}px, 0, 0)`;
+           
+        }
+        if (offset > 500) {
+            const perc = Math.min(1, (offset - 500) / (finTransitionPrenom - finTransition - 800));
+            logowebdev.style.transform = `translate(-50%, -50%) scale(${1.2 * perc})`;
+            headingos.innerHTML="i'm"             
+        }else{
+            headingos.innerHTML="im"
+        }
+    } else if (yoff < finDePage) { // Scrolling parallax
+        firstpage.style.display = 'none';
+        logowebdev.style.transform = `translate(-50%, -50%) scale(1.2)`;
+        const offset = yoff - finTransitionPrenom;
+        const duration = finDePage - finTransitionPrenom;
+        app.style.transform = `translate3d(0, -${offset}px, 0)`;         
+        
+    }
+};
+
+document.addEventListener('scroll', calculPos)
+window.addEventListener('resize', calculPos)
+
+</script>
+
+{% endblock %}
+</body>
 </html>

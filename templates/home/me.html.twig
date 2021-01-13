@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+		
+		</title>
+	
+
+		<link rel="stylesheet" href="{{asset('/css/style.css') }}">
+  
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+       
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap" rel="stylesheet">
+		</head>
+		<body>
+
+		{% block body %}
+		<div class="container">
+            	<div class="columnLeft">
+			<button id="btn2"> <img src="/images/flecheG.svg" alt="flecheG"></button>
+			</div>
+		<div class="columnMid">
+			<div class="carousel">    			
+				<div class="carousel-item active">
+				<h2>const <strong>maximino=</strong></h2><br/>
+					<p>Hello, my name is Maximino. <br/>I am a student in <strong>web development</strong> based in Enghien. I am still oscillating between back and front-end. Currently in my last year in Ateliers du Pixel, I am looking for an internship to sharpen my skills.</p><br/>
+                    <p>Easy going, curious and with good communication skills, I am <strong>passionate </strong>about knowledge.</p>
+                     <br/>                    
+                    <p>;</p>
+				</div>  
+				<div class="carousel-item">			
+				<h2>skills <i class="fas fa-code" style="color:#FFA654;" ></i> </h2><br/>
+                    <p> This list is still growing. I am learning React and Webpack at the moment. My favourite framework so far is <strong>Symfony</strong>.
+                    <div class="logos">
+                        <i class="fab fa-html5" style="color:#FFA654;"></i>
+                        <i class="fab fa-css3-alt" style="color:#FFA654;"></i>
+                        <i class="fab fa-js" style="color:#FFA654;"></i>
+                        <i class="fab fa-vuejs" style="color:#FFA654;"></i>
+                        <i class="fab fa-php" style="color:#FFA654;"></i>
+                        <i class="fab fa-symfony" style="color:#FFA654;"></i>             
+                        <i class="fab fa-wordpress"style="color:#FFA654;"></i>
+                    </div>
+				</div>
+				<div class="carousel-item">
+				<h2>work</h2><br/>
+                    <p>Some of the projects I have done for my courses or for myself. You can access all my codes on my<a href="https://github.com/emzakh"><strong>github</strong></a>.</p>		
+
+                    <p class="work">
+                        <a href="{{ path('work') }}" class="discover" >discover</a>
+                              <a href="https://github.com/emzakh"><i class="fab fa-github" style="color:white;"></i> </a> 
+                    </p>
+                </div>                  
+
+                <div class="bottomus">
+                    <div class="dotContainer">
+                    </div>
+                    <a href="{{ path('home')}}" class="retour">home</a>
+                </div>
+			</div>               
+        </div>
+        
+			<div class="columnRight">
+			<button id="btn1"> <img src="/images/flecheD.svg" alt="flecheD"></button>			
+			</div>
+			
+		</div>
+
+
+
+		{% endblock %}
+			
+		{% block javascripts %}
+		<script>
+ 		  let i = 0
+        let carou = document.querySelectorAll('.carousel-item')
+        let btnAdd = document.querySelector('#btn1')
+        let btnRemove = document.querySelector('#btn2')
+
+
+       
+
+        carou.forEach((element,key)=>{
+
+            let dot = document.createElement('div')
+            dot.innerText=key+1+"."
+            dot.classList.add('dot')
+            dot.setAttribute("index",key)
+            document.querySelector('.dotContainer').append(dot)
+            if(key ===0){
+                dot.classList.add('dotActive')
+            }
+
+            dot.addEventListener('click',evt=>{
+
+                let index = dot.getAttribute('index')
+                i = index
+
+                document.querySelector('.carousel-item.active').classList.remove('active')
+                document.querySelector('.dot.dotActive').classList.remove('dotActive')
+                carou[index].classList.add('active')
+                dot.classList.add('dotActive')
+
+            })
+        })
+
+        let dot = document.querySelectorAll('.dot')
+
+        btnAdd.addEventListener('click', evt=>{
+            carousel()
+        })
+
+        btnRemove.addEventListener('click',evt => {
+
+            dot[i].classList.remove('dotActive')
+            carou[i].classList.remove('active')
+            if(i===0){
+                i=carou.length;
+            }
+            i--
+            carou[i].classList.add('active')
+            dot[i].classList.add('dotActive')
+        })
+
+        function carousel(){
+
+            dot[i].classList.remove('dotActive')
+            carou[i].classList.remove('active')
+            i++
+            if(i===carou.length){
+                i=0;
+            }
+            carou[i].classList.add('active')
+            dot[i].classList.add('dotActive')
+        }
+
+
+		</script>
+		{% endblock %}
+	
+
+</body>
+</html>

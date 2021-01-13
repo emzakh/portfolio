@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+		
+		</title>
+
+		<link rel="stylesheet" href="{{asset('/css/style.css') }}">  
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>       
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap" rel="stylesheet">
+		</head>
+		<body>
+
+		{% block body %}
+   
+		
+		
+	 <a href="{{ path('me') }}"> <img src="/images/flecheG.svg" class="workReturn"></a>
+
+		<div class="wrapper-work">
+	<a href="#" class="festival grid-work">
+				<img class="images-work" src="images/festival.png" alt="festival" data="#popup1" id="#festival">
+				<div class="textImage">Festival</div>
+			</a>
+			<a href="#" class="garage grid-work">			
+				<img class="images-work" src="images/garage.png" alt="garage" data="#popup" id="#garage">	
+				<div class="textImage">Garage Symfony</div>
+			</a>
+		
+			<a href="#" class="bootstrap grid-work">
+				<img class="images-work" src="images/bootstrap.png" alt="bootstrap" data="#popup2" id="#bootstrap">
+				<div class="textImage">Bootstrap</div>
+			</a>
+			<a href="#" class="oxo grid-work">
+				<img class="images-work" src="images/oxo.png" alt="oxo" data="#popup3" id="#oxo">
+				<div class="textImage">Oxo js</div>
+			</a>		
+		</div>
+
+	<div class="overlay" id="popup">
+		<div class="overlay-container">			
+			<p class="title-overlay">Garage Symfony</p>			
+				<img src="/images/Garage-1.png">			
+				<p class="title-overlay">about <a href="https://www.google.com">view this project</a></p>
+				<hr class="hr-overlay">
+				<p class="paragraph-overlay">My biggest solo project yet in Symfony, I had to create a website wich could manage ads and user creation. I added edit for both ads and users profile. My main focus there was the back-end aspect of things, so I just used bootstrap for the visuals.</p>
+				<p class="title-overlay">technology</p>
+				<div class="tech-box"> 
+					<div class="tech-div">html5</div>
+					<div class="tech-div">css</div>
+					<div class="tech-div">php</div>
+					<div class="tech-div">symfony</div>		
+					<div class="tech-div">twig</div>		
+					<div class="tech-div">bootstrap</div>		
+					<div class="tech-div">mysql</div>		
+				</div>
+				<div class="close">return</div>		
+		</div>
+	</div>
+
+	<div class="overlay" id="popup1">
+   	<div class="overlay-container">	
+
+			<p class="title-overlay">Festival</p>
+			<!-- <div class="overlay-containerLeft"> -->
+				<img src="/images/Festival-1.png">			
+				<p class="title-overlay">about <a href="http://festival.maximino.be">view this project</a></p>
+				<hr class="hr-overlay">
+				<p class="paragraph-overlay">Website for a fake festival I made last year. I had to come up with a realistic design. It was my first experience with a vanilla javascript carousel, good times.</p>
+				<p class="title-overlay">technology</p>
+
+				<div class="tech-box"> 
+					<div class="tech-div">html5</div>
+					<div class="tech-div">css</div>
+					<div class="tech-div">javascript</div>
+						
+				</div>
+				<div class="close">return</div>
+			<!-- </div> -->
+		</div>
+	</div>
+
+	<div class="overlay" id="popup2">
+    	<div class="overlay-container">	
+
+			<p class="title-overlay">Bootstrap</p>
+			<!-- <div class="overlay-containerLeft"> -->
+				<img src="/images/Bootstrap-1.png">			
+				<p class="title-overlay">about <a href="https://www.google.com">view this project</a></p>
+				<hr class="hr-overlay">
+				<p class="paragraph-overlay">Small website I made to train with bootstrap and Sal. The idea here was to create quickly a responsive website using bootstrap, try some of the Sal's animations and fooling around with their delays.</p>
+				<p class="title-overlay">technology</p>
+
+				<div class="tech-box"> 
+					<div class="tech-div">html5</div>
+					<div class="tech-div">boostrap</div>
+					<div class="tech-div">Sal</div>				
+				</div>
+				<div class="close">return</div>
+			<!-- </div> -->
+		</div>
+	</div>
+
+	<div class="overlay" id="popup3">
+   <div class="overlay-container">	
+
+			<p class="title-overlay">Tic-tac-toe</p>
+			<!-- <div class="overlay-containerLeft"> -->
+				<img src="/images/Oxo-1.png">			
+				<p class="title-overlay">about <a href="https://www.google.com">view this project</a></p>
+				<hr class="hr-overlay">
+				<div class="paragraph-overlay">Two players tic-tac-toe game I made during summer in vanilla javascript. I made a memory game too wich can be found <a href="https://www.google.com">here</a></div> 
+				<p class="title-overlay">technology</p>
+
+				<div class="tech-box"> 
+					<div class="tech-div">html5</div>
+					<div class="tech-div">css</div>
+					<div class="tech-div">javascript</div>
+					
+						
+				</div>
+				<div class="close">return</div>
+			<!-- </div> -->
+		</div>
+	</div>
+
+  </div>
+
+
+		{% endblock %}
+			
+		{% block javascripts %}
+		<script>
+
+		let popup=document.querySelectorAll('.overlay');
+		let img=document.querySelectorAll('.images-work');
+		let close = document.querySelectorAll('.close')
+
+		img.forEach(element => {			
+			element.addEventListener('click', e => {
+				let position = e.target.getAttribute("data")
+				let query = document.querySelector(position)			
+				query.classList.add('active')
+				query.querySelector('div').addEventListener('click', event =>{
+					query.classList.remove('active')				
+				})
+			document.addEventListener('keydown', e =>{
+                    if(e.keyCode == 27){
+                    query.classList.remove('active')
+                    }
+                })
+			})	
+		})
+
+
+
+	
+
+
+     
+		</script>
+		{% endblock %}
+	
+
+</body>
+</html>
