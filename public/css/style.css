@@ -505,7 +505,7 @@ button:focus {
   position:absolute;  
   color:white;
   top:-500px;
-  z-index:999;
+  z-index:9;
 }
 
 
@@ -730,6 +730,15 @@ button:focus {
 
     width: 80%;
   }
+
+  .grid-work:hover .textImage{
+    top:-500px;
+    left:0;
+    transform:none;
+   }
+   
+ 
+
 }
 
 

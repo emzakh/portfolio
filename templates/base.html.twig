@@ -37,8 +37,8 @@
 									</h1>
 									<img src="images/webdevelopper.png" class="logowebdev" style="padding-top:50px;"></img>
 
-								<div class="multi-button" style="margin-top:50px;" >
-									<a href="#">CV</a>
+								<div class="multi-button" style="margin-top:50px;" >                               
+									<a href="./images/cvmaximino.pdf" download="CVMaximino">CV</a>
 									<a href="{{ path('me')}}"button>Me</a>
 									<a href="{{ path('work')}}">Work</a>
 								</div>
@@ -78,7 +78,7 @@ const calculPos = () => {
     const finTransitionPrenom = 2300;
     const finDePage = 3450;    
       
-    if (document.body.clientHeight - yoff - window.innerHeight <=200 ) {
+    if (document.body.clientHeight - yoff - window.innerHeight <=150 ) {
         buttonEnter.classList.add('anim');
         headingos.classList.add('anim2');       
         
